@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bismark’s Portfolio</title>
+
+  <style>
+    .about,
+.contact {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 90px 24px 110px;
+}
+
+.about p,
+.contact p {
+  color: #171717;
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.contact {
+  padding-bottom: 120px;
+}
+
+.contact-link {
+  display: block;
+  width: fit-content;
+  margin-top: 18px;
+  color: #ffb703;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #f9f7f3;
+      --panel: #f3f0eb;
+      --ink: #0f172a;
+      --muted: #334155;
+      --line: #e7e3da;
+      --accent: #ffb703;
+      --shadow: 0 18px 42px rgba(23, 23, 23, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 94px;
+    }
+
+    body {
+      margin: 0;
+      background-color: #cff4f2;
+      background-image:
+        radial-gradient(circle at 12% 16%, rgba(0, 222, 186, 0.3), transparent 24%),
+        radial-gradient(circle at 88% 70%, rgba(0, 174, 202, 0.2), transparent 28%),
+        radial-gradient(circle at 52% 34%, rgba(255, 255, 255, 0.8), transparent 36%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.58) 0%, rgba(255, 255, 255, 0.08) 44%, rgba(0, 196, 176, 0.12) 100%),
+        linear-gradient(120deg, #e3fff4 0%, #bfeef0 48%, #e8fbf8 100%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0 48%, rgba(0, 100, 110, 0.04) 48.3%, transparent 48.8%),
+        linear-gradient(60deg, transparent 0 68%, rgba(0, 200, 175, 0.12) 68.2%, transparent 69.1%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+      opacity: 0.9;
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    section {
+      position: relative;
+    }
+
+    .about,
+    .work,
+    .featured-project,
+    .motion-project,
+    .contact {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      place-items: center;
+      padding: 64px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 9% 16% auto;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 183, 3, 0.22), rgba(255, 183, 3, 0.05) 30%, transparent 70%);
+      filter: blur(18px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+      animation: fadeUp 0.9s ease both;
+    }
+
+    .hero-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: #171717;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-logo {
+      display: block;
+      width: 92px;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 8px 20px rgba(23, 23, 23, 0.2);
+    }
+
+    .brand-logo-preview {
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      cursor: zoom-in;
+      font: inherit;
+    }
+
+    .brand-logo-preview:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 5px;
+    }
+
+    .label {
+      color: #ffb703;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      display: inline-block;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 183, 3, 0.3);
+      border-radius: 999px;
+      background: rgba(255, 183, 3, 0.04);
+    }
+
+    h1 {
+      margin: 16px 0;
+      font-size: clamp(48px, 9vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      animation: fadeUp 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+    }
+
+    .intro {
+      max-width: 540px;
+      margin: 0 auto;
+      color: #5f5f5f;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 32px;
+      padding: 14px 24px;
+      background: #ffb703;
+      color: #171717;
+      border-radius: 999px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 10px 30px rgba(255, 183, 3, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .button:hover {
+      box-shadow: 0 14px 36px rgba(255, 183, 3, 0.28);
+      filter: brightness(1.03);
+    }
+
+    .button:hover,
+    .contact-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .work {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 70px 24px 90px;
+    }
+
+    .work-intro {
+      padding-bottom: 0;
+    }
+
+    .about,
+    .work,
+    .featured-project,
+    .motion-project,
+    .contact {
+      text-align: left;
+    }
+
+    h2 {
+      margin: 12px 0 36px;
+      font-size: clamp(32px, 4vw, 42px);
+      line-height: 1.1;
+    }
+
+    .projects {
+      display: grid;
+     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      background: #f5f5f2;
+      border-radius: 18px;
+      border: 1px solid #e6e2d8;
+      transform: translateY(24px) scale(0.98);
+      opacity: 0;
+      animation: cardReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
+
+    .project-card:nth-child(2n) {
+      animation-delay: 0.08s;
+    }
+
+    .project-card:nth-child(3n) {
+      animation-delay: 0.16s;
+    }
+
+    .project-card:nth-child(4n) {
+      animation-delay: 0.24s;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.01);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 183, 3, 0.45);
+    }
+
+    .project-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.06);
+      filter: saturate(1.12);
+    }
+
+    .project-caption {
+      padding: 16px 18px 18px;
+      background: #ffffff;
+    }
+
+    .project-caption h3 {
+      margin: 0 0 6px;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .project-caption p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .project-card:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    @keyframes cardReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 700px) {
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    }
+    .featured-project {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 95px 24px;
+    }
+
+    .featured-project,
+    .motion-project,
+    .about,
+    .contact,
+    .reveal-section,
+    .reveal-image,
+    .reveal-card {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+
+    .featured-project.visible,
+    .motion-project.visible,
+    .about.visible,
+    .contact.visible,
+    .reveal-section.visible,
+    .reveal-image.visible,
+    .reveal-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .reveal-section h2,
+    .reveal-card .project-caption h3 {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.65s ease 0.12s, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+    }
+
+    .reveal-section.visible h2,
+    .reveal-card.visible .project-caption h3 {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      h1 {
+        animation: none;
+      }
+
+      .navbar {
+        animation: none;
+      }
+
+      .reveal-section h2,
+      .reveal-card .project-caption h3 {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+
+      .site-footer p {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    .featured-text {
+      max-width: 600px;
+      margin: 0 0 36px;
+      color: #5f5f5f;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .brand-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .brand-image:nth-child(2) {
+      transition-delay: 0.08s;
+    }
+
+    .brand-image:nth-child(3) {
+      transition-delay: 0.16s;
+    }
+
+    .brand-image:nth-child(4) {
+      transition-delay: 0.24s;
+    }
+
+    .brand-image {
+      overflow: hidden;
+      cursor: zoom-in;
+      min-height: 280px;
+      border-radius: 18px;
+      background: #f5f5f2;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: transform 0.6s ease, opacity 0.6s ease, box-shadow 0.6s ease;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .brand-image.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .brand-image:hover {
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
+    }
+
+    .brand-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .brand-image:hover img {
+      transform: scale(1.04);
+    }
+
+@media (max-width: 700px) {
+  .brand-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.motion-project {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 90px 24px 110px;
+}
+
+.motion-video {
+  display: block;
+  width: 100%;
+  margin-top: 36px;
+  border-radius: 18px;
+  background: #000000;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px max(24px, calc((100% - 1050px) / 2));
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #e7e3da;
+  backdrop-filter: blur(12px);
+      animation: headerEnter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+    @keyframes headerEnter {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #171717;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.nav-brand-name {
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(23, 23, 23, 0.82);
+  white-space: nowrap;
+}
+
+.nav-brand .brand-logo {
+  width: 48px;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 3px 3px 0 #171717;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+}
+
+.nav-links a {
+  color: #5f5f5f;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #ffb703;
+}
+
+@media (max-width: 500px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+
+  .nav-brand .brand-logo {
+    width: 44px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+  }
+
+  .hero {
+    min-height: 72vh;
+    padding-top: 48px;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+.site-footer {
+  padding: 24px;
+  text-align: center;
+  color: #6f6f6f;
+  border-top: 1px solid #e7e3da;
+  background: #f7f7f5;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease 0.12s, transform 0.6s ease 0.12s;
+}
+
+.site-footer.visible p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating-actions {
+  position: fixed;
+  right: 24px;
+  bottom: 20px;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.assistant-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.assistant-prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.78);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.08));
+  color: rgba(15, 23, 42, 0.92);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+  cursor: pointer;
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255,255,255,0.7);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  transform: translateX(16px) scale(0.94);
+  pointer-events: none;
+  transition: opacity 0.26s ease, transform 0.26s cubic-bezier(0.22, 1.2, 0.36, 1);
+}
+
+.assistant-group:hover .assistant-prompt,
+.assistant-group:focus-within .assistant-prompt,
+.assistant-prompt:hover,
+.assistant-prompt:focus-visible {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+  pointer-events: auto;
+  animation: assistantPromptBounce 0.36s ease-out;
+}
+
+@keyframes assistantPromptBounce {
+  0% {
+    transform: translateX(0) scale(0.92);
+  }
+  48% {
+    transform: translateX(0) scale(1.04);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.assistant-prompt span {
+  color: #f4b942;
+  font-size: 20px;
+  transform: translateY(-1px);
+}
+
+.assistant-toggle {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.62), rgba(30, 64, 175, 0.82));
+  color: #edf6ff;
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 16px 30px rgba(30, 64, 175, 0.2), inset 0 1px 0 rgba(255,255,255,0.65), inset 0 -10px 18px rgba(255,255,255,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.assistant-toggle:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 32px rgba(30, 64, 175, 0.28), inset 0 1px 0 rgba(255,255,255,0.66);
+  border-color: rgba(255, 255, 255, 0.82);
+}
+
+.assistant-toggle .ai-icon {
+  width: 30px;
+  height: 30px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgba(30, 64, 175, 0.12));
+}
+
+.assistant-toggle .ai-question {
+  animation: aiPulse 2.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes aiPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.9;
+  }
+}
+
+.whatsapp-float {
+  display: grid;
+  width: 52px;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(167, 243, 208, 0.7), rgba(255, 255, 255, 0.2), rgba(34, 197, 94, 0.28));
+  color: #052e16;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 14px 28px rgba(34, 197, 94, 0.14), inset 0 1px 0 rgba(255,255,255,0.8);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 18px 32px rgba(34, 197, 94, 0.18), inset 0 1px 0 rgba(255,255,255,0.84);
+  border-color: rgba(255, 255, 255, 0.82);
+}
+
+.whatsapp-float:focus-visible,
+.assistant-toggle:focus-visible {
+  outline: 3px solid #087f68;
+  outline-offset: 4px;
+}
+
+.whatsapp-float svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.assistant-panel[hidden] {
+  display: none;
+}
+
+.assistant-panel {
+  position: fixed;
+  right: 24px;
+  bottom: 146px;
+  z-index: 15;
+  display: flex;
+  width: min(380px, calc(100vw - 32px));
+  max-height: min(540px, calc(100dvh - 176px));
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(23, 23, 23, 0.22);
+}
+
+.assistant-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  background: #e3fff4;
+}
+
+.assistant-header h2 {
+  margin: 4px 0 0;
+  font-size: 20px;
+}
+
+.assistant-close {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--ink);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.assistant-messages {
+  display: flex;
+  min-height: 100px;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  padding: 18px;
+}
+
+.assistant-message {
+  max-width: 90%;
+  margin: 0;
+  padding: 11px 13px;
+  border-radius: 8px;
+  background: #f3f0eb;
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.assistant-user {
+  align-self: flex-end;
+  background: #cff4f2;
+}
+
+.assistant-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 18px 16px;
+}
+
+.assistant-suggestions[hidden] {
+  display: none;
+}
+
+.assistant-suggestions button {
+  padding: 8px 10px;
+  border: 1px solid #9bd7cf;
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.assistant-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.assistant-form input {
+  min-width: 0;
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink);
+  font: inherit;
+}
+
+.assistant-form button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--ink);
+  color: #ffffff;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .floating-actions {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .assistant-panel {
+    right: 16px;
+    bottom: 142px;
+    max-height: calc(100dvh - 162px);
+  }
+}
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: grid;
+      place-items: center;
+      padding: 32px;
+      background: rgba(24, 24, 24, 0.94);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .lightbox.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .lightbox-image {
+      display: block;
+      max-width: min(92vw, 1100px);
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+      transform: scale(0.96);
+      transition: transform 0.3s ease;
+    }
+
+    .lightbox.is-open .lightbox-image {
+      transform: scale(1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      background: rgba(18, 18, 18, 0.8);
+      color: #ffffff;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:focus-visible {
+      color: #ffb703;
+      border-color: #ffb703;
+      outline: none;
+    }
+
+    .lightbox-caption {
+      position: absolute;
+      right: 32px;
+      bottom: 24px;
+      left: 32px;
+      color: #c9c9c9;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 500px) {
+      .lightbox {
+        padding: 20px;
+      }
+
+      .lightbox-close {
+        top: 14px;
+        right: 16px;
+      }
+
+      .lightbox-caption {
+        right: 20px;
+        bottom: 18px;
+        left: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <button class="nav-brand brand-logo-preview" type="button" aria-label="View BK logo full size" data-title="BK logo">
+      <img class="brand-logo" src="images/BK%20LOGO%20.jpeg" alt="BK logo">
+      <span class="nav-brand-name">Bismark Kumi</span>
+    </button>
+
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="label">Graphic Designer</div>
+
+        <h1>Hello, I’m<br>Bismark.</h1>
+
+        <p class="intro">
+          I create bold, meaningful visual identities and designs that help ideas stand out.
+        </p>
+
+        <a class="button" href="mailto:kwabenaebo128@gmail.com">Let’s work together</a>
+      </div>
+    </section>
+
+    <section class="about reveal-section" id="about">
+      <div class="label">About Me</div>
+      <h2>Design with purpose.</h2>
+
+      <p>
+        I'm Bismark, a graphic designer passionate about creating impactful flyers,
+        posters, logos, and packaging designs.
+      </p>
+
+      <p>
+        I use AI as a creative research and inspiration tool, combining it with
+        Adobe Illustrator, Photoshop, InDesign, and Canva to create thoughtful
+        visual solutions.
+      </p>
+
+      <p>
+        I always aim to deliver my best work, understand each client's vision, and
+        build strong partnerships through quality, consistency, and trust.
+      </p>
+    </section>
+
+    <section class="work work-intro reveal-section" id="work">
+      <div class="label">Selected Work</div>
+      <h2>Design that makes an impact.</h2>
+      <p class="featured-text">
+        A selection of brand identities, campaigns, and visual design projects.
+      </p>
+    </section>
+
+    <section class="featured-project reveal-section">
+      <div class="label">Featured Brand Identity</div>
+      <h2>Noa’s Construction</h2>
+
+      <p class="featured-text">
+        A bold construction brand identity applied across logo design and branded merchandise.
+      </p>
+
+      <div class="brand-grid">
+        <div class="brand-image logo-image reveal-image" tabindex="0" role="button" aria-label="View Noa's Construction logo full screen" data-title="Noa's Construction logo">
+          <img src="images/noas-logo.jpg" alt="Noa's Construction logo">
+        </div>
+
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View Noa's Construction T-shirt full screen" data-title="Noa's Construction T-shirt">
+          <img src="images/noas-tshirt.jpg" alt="Noa's Construction T-shirt mockup">
+        </div>
+
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View Noa's Construction mug full screen" data-title="Noa's Construction mug">
+          <img src="images/noas-mug.jpg" alt="Noa's Construction mug mockup">
+        </div>
+
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View Noa's Construction cap full screen" data-title="Noa's Construction cap">
+          <img src="images/noas-cap.jpg" alt="Noa's Construction cap mockup">
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-project reveal-section">
+      <div class="label">Corporate &amp; Packaging Design</div>
+      <h2>Silent Star Limited</h2>
+
+      <p class="featured-text">
+        A corporate design system combining brand identity, stationery, product packaging, and technical product presentation.
+      </p>
+
+      <div class="brand-grid">
+        <div class="brand-image logo-image reveal-image" tabindex="0" role="button" aria-label="View Silent Star logo full screen" data-title="Silent Star logo">
+          <img src="images/silent-star-logo.jpg" alt="Silent Star Limited logo">
+        </div>
+
+        <div class="brand-image card-with-contact reveal-image" tabindex="0" role="button" aria-label="View Silent Star business card full screen" data-title="Silent Star business card">
+          <img src="images/silent-star-card%20.jpg" alt="Silent Star Limited business card">
+        </div>
+
+        <div class="brand-image card-with-contact reveal-image" tabindex="0" role="button" aria-label="View Thomas Essilfie business card full screen" data-title="Thomas Essilfie business card">
+          <img src="images/Thomas.jpg" alt="Thomas Essilfie Silent Star business card">
+        </div>
+
+        <div class="brand-image card-with-contact reveal-image" tabindex="0" role="button" aria-label="View Patrick Ekow Sam business card full screen" data-title="Patrick Ekow Sam business card">
+          <img src="images/signature%20card%20.jpg" alt="Patrick Ekow Sam Silent Star business card">
+        </div>
+
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View Goldlux packaging full screen" data-title="Goldlux packaging">
+          <img src="images/goldlux-packaging.jpg" alt="Goldlux LED product packaging">
+        </div>
+
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View Walnut packaging full screen" data-title="Walnut packaging">
+          <img src="images/walnut-packaging.jpg" alt="Walnut product packaging design">
+        </div>
+      </div>
+    </section>
+
+    <section class="work reveal-section">
+      <div class="label">Posters &amp; Campaigns</div>
+      <h2>Campaigns with a point of view.</h2>
+      <div class="projects">
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Summer Trip artwork full screen" data-title="Summer Trip">
+          <img src="images/summer-trip.jpeg" alt="Summer Trip event poster">
+          <div class="project-caption">
+            <h3>Summer Trip</h3>
+            <p>Promotional poster for a summer travel event.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Go Green artwork full screen" data-title="Go Green">
+          <img src="images/go-green.jpeg" alt="Go Green with TTU campaign poster">
+          <div class="project-caption">
+            <h3>Go Green</h3>
+            <p>Visual campaign encouraging a greener campus.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Bible Study artwork full screen" data-title="Bible Study">
+          <img src="images/bible-study.jpg" alt="Bible Study poster">
+          <div class="project-caption">
+            <h3>Bible Study</h3>
+            <p>Event poster for a community Bible study.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Fanta Orange artwork full screen" data-title="Fanta Orange">
+          <img src="images/fanta-orange.jpg" alt="Orange drink product poster">
+          <div class="project-caption">
+            <h3>Fanta Orange</h3>
+            <p>Bright product poster promoting an orange drink.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Coby Macks artwork full screen" data-title="Coby Macks">
+          <img src="images/coffee-ad.jpg" alt="Coby Macks coffee poster">
+          <div class="project-caption">
+            <h3>Coby Macks</h3>
+            <p>Promotional poster for a coffee brand.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Bigoo Lemon artwork full screen" data-title="Bigoo Lemon">
+          <img src="images/bigoo-lemon.jpg" alt="Bigoo Lemon drink poster">
+          <div class="project-caption">
+            <h3>Bigoo Lemon</h3>
+            <p>Product poster highlighting a lemon drink.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Lola's Hub artwork full screen" data-title="Lola's Hub">
+          <img src="images/lola-ice-cream.jpg" alt="Lola's Ice Cream Hub poster">
+          <div class="project-caption">
+            <h3>Lola's Hub</h3>
+            <p>Promotional design for an ice cream shop.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Carols Service artwork full screen" data-title="Carols Service">
+          <img src="images/carols-service.jpg" alt="Carols Service poster">
+          <div class="project-caption">
+            <h3>Carols Service</h3>
+            <p>Event poster for a Christmas carol service.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View New Year 2026 artwork full screen" data-title="New Year 2026">
+          <img src="images/new-year-2026.jpg" alt="Happy New Year 2026 poster">
+          <div class="project-caption">
+            <h3>New Year 2026</h3>
+            <p>Celebration poster welcoming the new year.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Independence Day artwork full screen" data-title="Independence Day">
+          <img src="images/independence-day.jpg" alt="Ghana Independence Day poster">
+          <div class="project-caption">
+            <h3>Independence Day</h3>
+            <p>Poster celebrating Ghana's Independence Day.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View FC25 Tournament artwork full screen" data-title="FC25 Tournament">
+          <img src="images/fc25-tournament.jpg" alt="FC25 Tournament poster">
+          <div class="project-caption">
+            <h3>FC25 Tournament</h3>
+            <p>Promotional poster for an FC25 tournament.</p>
+          </div>
+        </article>
+
+        <article class="project-card reveal-card" tabindex="0" role="button" aria-label="View Mother's Day artwork full screen" data-title="Mother's Day">
+          <img src="images/Mothers%27s%20Day%20Flyer.jpg" alt="Mother's Day flyer">
+          <div class="project-caption">
+            <h3>Mother's Day</h3>
+            <p>Flyer celebrating Mother's Day.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="featured-project reveal-section">
+      <div class="label">Logo Design</div>
+      <h2>Marks That Speak.</h2>
+
+      <p class="featured-text">
+        Distinctive logo concepts designed to give brands a memorable visual signature.
+      </p>
+
+      <div class="brand-grid">
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View BAGE logo full screen" data-title="BAGE logo">
+          <img src="images/1.png" alt="BAGE logo design">
+        </div>
+
+        <div class="brand-image reveal-image" tabindex="0" role="button" aria-label="View Bagre logo full screen" data-title="Bagre logo">
+          <img src="images/LOGO%202.png" alt="Bagre logo design">
+        </div>
+      </div>
+    </section>
+
+    <section class="motion-project reveal-section">
+      <div class="label">Motion Design</div>
+      <h2>Strawberry Product Ad</h2>
+
+      <p class="featured-text">
+        A short animated product advertisement created to capture attention and bring the product to life.
+      </p>
+
+      <video class="motion-video" controls autoplay muted loop playsinline>
+        <source src="videos/strawberry-product-ad.mp4" type="video/mp4">
+        Your browser does not support this video.
+      </video>
+    </section>
+
+    <section class="contact reveal-section" id="contact">
+      <div class="label">Contact</div>
+      <h2>Let's create something great.</h2>
+
+      <p>Available for flyers, posters, logos, packaging, and creative design projects.</p>
+
+      <a class="contact-link" href="mailto:kwabenaebo128@gmail.com">
+        kwabenaebo128@gmail.com
+      </a>
+
+      <a class="contact-link" href="https://wa.me/233598718834" target="_blank" rel="noreferrer">
+        WhatsApp: 059 871 8834
+      </a>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Artwork preview" aria-hidden="true">
+    <button class="lightbox-close" type="button" aria-label="Close artwork preview">&times;</button>
+    <img class="lightbox-image" alt="">
+    <div class="lightbox-caption" aria-live="polite"></div>
+  </div>
+
+  <div class="floating-actions">
+    <a class="whatsapp-float" href="https://wa.me/233598718834?text=Hello%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20design%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat with Bismark on WhatsApp" title="Chat with Bismark on WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.1-.198.05-.372-.025-.52-.074-.15-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479s1.065 2.875 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.44-9.884 9.89-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.002 5.45-4.44 9.884-9.888 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.946L.057 24l6.307-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+      </svg>
+    </a>
+
+    <div class="assistant-group">
+      <button class="assistant-prompt" id="assistant-prompt" type="button" aria-label="Ask for project help">
+        Need help? Ask me anything <span aria-hidden="true">✦</span>
+      </button>
+      <button class="assistant-toggle" id="assistant-toggle" type="button" aria-controls="assistant-panel" aria-expanded="false" aria-label="Project help">
+        <svg class="ai-icon" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="assistantGlow" x1="0%" x2="100%" y1="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#dbeafe"/>
+            </linearGradient>
+          </defs>
+          <path d="M32 9.5l2.7 8.5 8.5 2.7-8.5 2.7-2.7 8.5-2.7-8.5-8.5-2.7 8.5-2.7L32 9.5Z" fill="currentColor"/>
+          <path d="M20 28l1.9 5.8 5.8 1.9-5.8 1.9-1.9 5.8-1.9-5.8-5.8-1.9 5.8-1.9L20 28Z" fill="currentColor" opacity="0.9"/>
+          <path d="M46 28l1.7 5.3 5.3 1.7-5.3 1.7-1.7 5.3-1.7-5.3-5.3-1.7 5.3-1.7L46 28Z" fill="currentColor" opacity="0.92"/>
+          <path d="M32 33.5c2.5 0 4.5 2 4.5 4.5s-2 4.5-4.5 4.5-4.5-2-4.5-4.5 2-4.5 4.5-4.5Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path class="ai-question" d="M32 22.5v7.7M32 40.9v5.6" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <section class="assistant-panel" id="assistant-panel" aria-labelledby="assistant-title" hidden>
+    <div class="assistant-header">
+      <div>
+        <span class="label">Project help</span>
+        <h2 id="assistant-title">Design Project Guide</h2>
+      </div>
+      <button class="assistant-close" id="assistant-close" type="button" aria-label="Close design guide">&times;</button>
+    </div>
+    <div class="assistant-messages" id="assistant-messages" role="log" aria-live="polite" aria-relevant="additions text">
+      <p class="assistant-message">Hi! I can help you explore my design services and figure out what to prepare for your project.</p>
+    </div>
+    <div class="assistant-suggestions" id="assistant-suggestions">
+      <button type="button" data-prompt="What design services do you offer?">Your services</button>
+      <button type="button" data-prompt="Help me choose a design service for my project.">Help me choose</button>
+      <button type="button" data-prompt="What should I prepare before starting?">What to prepare</button>
+    </div>
+    <form class="assistant-form" id="assistant-form">
+      <input id="assistant-input" name="question" type="text" aria-label="Ask about design services" placeholder="Ask a design question" autocomplete="off" required>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer class="site-footer reveal-section">
+    <p>© 2026 Bismark Kumi. Designed with purpose.</p>
+  </footer>
+
+  <script>
+    const revealItems = document.querySelectorAll('.reveal-section, .reveal-image, .reveal-card');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.18,
+      rootMargin: '0px 0px -20px 0px'
+    });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const lightbox = document.querySelector('#lightbox');
+    const lightboxImage = document.querySelector('.lightbox-image');
+    const lightboxCaption = document.querySelector('.lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+    const artworkItems = document.querySelectorAll('.project-card, .brand-image, .brand-logo-preview');
+    let previousFocus;
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('lightbox-open');
+      lightboxImage.removeAttribute('src');
+      previousFocus?.focus();
+    };
+
+    const openLightbox = (item) => {
+      const image = item.querySelector('img');
+      if (!image) return;
+
+      previousFocus = item;
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent = item.dataset.title || image.alt;
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('lightbox-open');
+      lightboxClose.focus();
+    };
+
+    artworkItems.forEach((item) => {
+      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openLightbox(item);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+        closeLightbox();
+      }
+    });
+
+    const assistantToggle = document.querySelector('#assistant-toggle');
+    const assistantPrompt = document.querySelector('#assistant-prompt');
+    const assistantPanel = document.querySelector('#assistant-panel');
+    const assistantClose = document.querySelector('#assistant-close');
+    const assistantMessages = document.querySelector('#assistant-messages');
+    const assistantSuggestions = document.querySelector('#assistant-suggestions');
+    const assistantForm = document.querySelector('#assistant-form');
+    const assistantInput = document.querySelector('#assistant-input');
+
+    const setAssistantOpen = (isOpen) => {
+      assistantPanel.hidden = !isOpen;
+      assistantToggle.setAttribute('aria-expanded', String(isOpen));
+      (isOpen ? assistantInput : assistantToggle).focus();
+    };
+
+    const appendAssistantMessage = (text, role) => {
+      const message = document.createElement('p');
+      message.className = `assistant-message assistant-${role}`;
+      message.textContent = text;
+      assistantMessages.append(message);
+      assistantMessages.scrollTop = assistantMessages.scrollHeight;
+    };
+
+    const getAssistantReply = (question) => {
+      const normalizedQuestion = question.toLowerCase();
+
+      if (/choose|which design|which service|help me decide/.test(normalizedQuestion)) {
+        return 'If you need a business identity, start with a logo. For an event or promotion, consider a flyer or poster. For a physical product, packaging design may fit. Tell me your goal if you are still unsure.';
+      }
+
+      if (/what.*service|what can you|what do you|offer/.test(normalizedQuestion)) {
+        return 'I create flyers, posters, logos, packaging, and visual identities. You can explore examples in the Posters & Campaigns, Logo Design, and featured project sections.';
+      }
+
+      if (/packag|label|box|product/.test(normalizedQuestion)) {
+        return 'Packaging design can help your product stand out and communicate its identity. Helpful starting details include the product type, package size, required text, and any print specifications you have.';
+      }
+
+      if (/logo|brand|identity|business/.test(normalizedQuestion)) {
+        return 'For a logo or brand identity, think about your business name, audience, what you offer, and the feeling you want the brand to communicate. I also show brand identity examples in the featured projects.';
+      }
+
+      if (/poster|flyer|event|campaign|birthday|church/.test(normalizedQuestion)) {
+        return 'For a flyer or poster, gather the event or campaign name, date, location, key message, audience, and any logos or images that need to appear.';
+      }
+
+      if (/prepare|start|begin|process|need|information/.test(normalizedQuestion)) {
+        return 'A useful starting brief includes what the design is for, who it should reach, the text and images to include, where it will be used, and any style references or deadline.';
+      }
+
+      if (/price|cost|quote|fee/.test(normalizedQuestion)) {
+        return 'Pricing depends on the type and scope of the project. Share a short description through the email or WhatsApp links in the Contact section to discuss your needs.';
+      }
+
+      return 'I can help with flyers, posters, logos, and packaging, or suggest what to prepare for a project. What are you hoping to create?';
+    };
+
+    const askAssistant = (question) => {
+      const trimmedQuestion = question.trim();
+      if (!trimmedQuestion) return;
+
+      appendAssistantMessage(trimmedQuestion, 'user');
+      appendAssistantMessage(getAssistantReply(trimmedQuestion), 'reply');
+      assistantSuggestions.hidden = true;
+    };
+
+    [assistantToggle, assistantPrompt].forEach((button) => {
+      if (button) {
+        button.addEventListener('click', () => setAssistantOpen(true));
+      }
+    });
+    assistantClose.addEventListener('click', () => setAssistantOpen(false));
+    assistantForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      askAssistant(assistantInput.value);
+      assistantInput.value = '';
+      assistantInput.focus();
+    });
+    assistantSuggestions.addEventListener('click', (event) => {
+      const promptButton = event.target.closest('[data-prompt]');
+      if (promptButton) askAssistant(promptButton.dataset.prompt);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !assistantPanel.hidden) {
+        setAssistantOpen(false);
+      }
+    });
+  </script>
+</body>
+</html>
